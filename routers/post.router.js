@@ -11,7 +11,12 @@ router.get('/posts', (req, res) =>{
   });
 });
 router.get('/posts/:postId', (req, res) =>{
-  res.send('getting that one special post!');
+  Post.find({ _id: req.params.postId }, function(err, posts){
+    if(err) return res.status(500).json({err: err});
+    return res.status(200).json({
+      posts: posts
+    });
+  });
 });
 router.post('/posts', (req, res) =>{
   const post = new Post(req.body);
