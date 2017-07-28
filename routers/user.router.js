@@ -9,7 +9,7 @@ router.get('/users', (req, res) =>{
     return res.status(200).json({
       users: users
     });
-  })
+  });
 });
 // get that one user by the _id
 router.get('/users/:userId', (req, res) =>{
