@@ -28,7 +28,12 @@ router.post('/posts', (req, res) =>{
   });
 });
 router.put('/posts/:postId', (req, res) =>{
-  res.send('updates errrrywhere!');
+  Post.findOneAndUpdate({ _id: req.params.userId}, req.body, function(err, post){
+    if(err) return res.status(500).json({err: err});
+    return res.status(200).json({
+      msg: "Successfully updated a post"
+    });
+  });
 });
 router.delete('/posts/:postId', (req, res) =>{
   res.send('burning it down!');
