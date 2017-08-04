@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require('../models/post.model');
 
 router.get('/posts', (req, res) =>{
-  Post.find({}, function(err, post){
+  Post.find({}, function(err, posts){
     if(err) return res.status(500).json({err: err});
     return res.status(200).json({
       posts: posts
